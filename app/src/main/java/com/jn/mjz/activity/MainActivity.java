@@ -1,18 +1,23 @@
 package com.jn.mjz.activity;
 
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.jn.mjz.activity.ActionBar.ActionBarActivity;
+import com.jn.mjz.activity.Button.ButtonViewActivity;
 import com.jn.mjz.activity.Clock.ClockViewActivity;
 import com.jn.mjz.activity.Fragment.ContainerActivity;
 import com.jn.mjz.activity.GridView.GridViewActivity;
+import com.jn.mjz.activity.ListView.ListViewActivity;
 import com.jn.mjz.activity.PopUp.PopUpWindowActivity;
 import com.jn.mjz.activity.Progress.ProgressActivity;
+import com.jn.mjz.activity.RecyclerView.RecyclerViewActivity;
+import com.jn.mjz.activity.Spinner.SpinnerActivity;
+import com.jn.mjz.activity.SwitchButton.SwitchButtonActivity;
 import com.jn.mjz.activity.Toast.ToastActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,11 +41,19 @@ public class MainActivity extends AppCompatActivity {
     private Button mBtnPop;
     private Button mBtnProgress;
     private Button mBtnFragment;
+    private Button mBtnActionBar;
+    private Button mBtnSwitch;
+    private Button mBtnSpinner;
     private EditText mEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setViews();
+        setClickListeners();
+    }
+
+    private void setViews() {
         setContentView(R.layout.activity_main);
         mButtonTextView = findViewById(R.id.btn_textview);
         mButtonBtnView = findViewById(R.id.btn_btnview);
@@ -61,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
         mBtnPop = findViewById(R.id.btn_pop);
         mBtnProgress = findViewById(R.id.btn_progress);
         mBtnFragment = findViewById(R.id.btn_fragment);
-        setClickListeners();
+        mBtnActionBar = findViewById(R.id.btn_actionBar);
+        mBtnSwitch = findViewById(R.id.btn_switchButton);
+        mBtnSpinner = findViewById(R.id.btn_spinner);
     }
 
     private void setClickListeners() {
@@ -84,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
         mBtnPop.setOnClickListener(onclick);
         mBtnProgress.setOnClickListener(onclick);
         mBtnFragment.setOnClickListener(onclick);
+        mBtnActionBar.setOnClickListener(onclick);
+        mBtnSwitch.setOnClickListener(onclick);
+        mBtnSpinner.setOnClickListener(onclick);
     }
 
     private class Onclick implements View.OnClickListener {
@@ -152,19 +170,31 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.btn_toast:
                     //跳转到Toast演示界面
-                    intent = new Intent(MainActivity.this,ToastActivity.class);
+                    intent = new Intent(MainActivity.this, ToastActivity.class);
                     break;
                 case R.id.btn_pop:
                     //跳转到PopUpWindow演示界面
-                    intent = new Intent(MainActivity.this,PopUpWindowActivity.class);
+                    intent = new Intent(MainActivity.this, PopUpWindowActivity.class);
                     break;
                 case R.id.btn_progress:
                     //跳转到Progress演示界面
-                    intent = new Intent(MainActivity.this,ProgressActivity.class);
+                    intent = new Intent(MainActivity.this, ProgressActivity.class);
                     break;
                 case R.id.btn_fragment:
                     //跳转到Fragment演示界面
-                    intent = new Intent(MainActivity.this,ContainerActivity.class);
+                    intent = new Intent(MainActivity.this, ContainerActivity.class);
+                    break;
+                case R.id.btn_actionBar:
+                    //跳转到ActionBar演示界面
+                    intent = new Intent(MainActivity.this, ActionBarActivity.class);
+                    break;
+                case R.id.btn_switchButton:
+                    //跳转到SwitchButton演示界面
+                    intent = new Intent(MainActivity.this, SwitchButtonActivity.class);
+                    break;
+                case R.id.btn_spinner:
+                    //跳转到Spinner演示界面
+                    intent = new Intent(MainActivity.this, SpinnerActivity.class);
                     break;
             }
             if (intented == 0) {

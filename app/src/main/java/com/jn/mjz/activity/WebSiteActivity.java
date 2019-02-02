@@ -15,8 +15,8 @@ public class WebSiteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_site);
         mWvMain=findViewById(R.id.wv);
-        mWvMain.setWebViewClient(new WebViewClient());
-        mWvMain.setWebChromeClient(new WebChromeClient());
+        mWvMain.setWebViewClient(new WebViewClient());//设置在当前页面打开
+        mWvMain.setWebChromeClient(new WebChromeClient());//进度条
         mWvMain.loadUrl("file:///android_asset/index.html");
     }
     @Override

@@ -46,4 +46,11 @@
         android:text="CustomDialog"
         android:textAllCaps="false"
         android:textSize="50px" />
+    <Button
+        android:id="@+id/btnInputDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="InputDialog"
+        android:textAllCaps="false"
+        android:textSize="50px" />
 </LinearLayout>

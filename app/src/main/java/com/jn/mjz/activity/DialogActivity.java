@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jn.mjz.activity.Dialog.CustomDialog;
+import com.jn.mjz.activity.Dialog.InputDialog;
 import com.jn.mjz.activity.Util.ToastUtil;
 
 public class DialogActivity extends AppCompatActivity {
@@ -26,7 +27,8 @@ public class DialogActivity extends AppCompatActivity {
     private Button mButtonNormalDialog;
     private Button mButtonSingleDialog;
     private Button mButtonMultiDialog;
-    private Button mButtonProgressDialog, mButtonCustomDialog;
+    private Button mButtonProgressDialog, mButtonCustomDialog, mBtnInputDialog;
+    private InputDialog mInputDialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class DialogActivity extends AppCompatActivity {
         mButtonMultiDialog = findViewById(R.id.btnMultiDialog);
         mButtonProgressDialog = findViewById(R.id.btnProgressDialog);
         mButtonCustomDialog = findViewById(R.id.btnCustomDialog);
+        mBtnInputDialog = findViewById(R.id.btnInputDialog);
         setClickListeners();
     }
 
@@ -47,6 +50,7 @@ public class DialogActivity extends AppCompatActivity {
         mButtonMultiDialog.setOnClickListener(onClick);
         mButtonProgressDialog.setOnClickListener(onClick);
         mButtonCustomDialog.setOnClickListener(onClick);
+        mBtnInputDialog.setOnClickListener(onClick);
     }
 
     private class OnClick implements View.OnClickListener {
@@ -198,6 +202,24 @@ public class DialogActivity extends AppCompatActivity {
                             finish();
                         }
                     }).show();
+                    break;
+                case R.id.btnInputDialog:
+                    if (mInputDialog == null) {
+                        mInputDialog = new InputDialog(DialogActivity.this, new InputDialog.IOnCancelClickListener() {
+                            @Override
+                            public void onCancelClick(String string) {
+                                mInputDialog.dismiss();
+                            }
+                        }, new InputDialog.IOnConfirmClickListener() {
+                            @Override
+                            public void onConfirmClick(String string) {
+                                ToastUtil.showMsg(DialogActivity.this, string);
+                                mInputDialog.dismiss();
+                            }
+                        });
+                    }
+                    mInputDialog.setCancelable(false);
+                    mInputDialog.setTitle("请输入你的姓名").setCancel("取消~").setConfirm("确定!").show();
                     break;
             }
         }

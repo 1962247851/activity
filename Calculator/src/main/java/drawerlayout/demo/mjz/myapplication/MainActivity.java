@@ -12,7 +12,6 @@ public class MainActivity extends AppCompatActivity {
     private Button mBtn0, mBtn1, mBtn2, mBtn3, mBtn4, mBtn5, mBtn6, mBtn7, mBtn8, mBtn9, mBtnPoint, mBtnIs, mBtnRoot, mBtnPlus, mBtnSubtract, mBtnMultipy, mBtnDivide, mBtnClear, mBtnClearEntry;
     private TextView mTv;
     private String operator = "", firstNum = "", nextNum = "", result = "", showText = "", number = "";
-    private Boolean isResult = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

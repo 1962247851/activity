@@ -87,6 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="传送"
+                android:textStyle="bold"
                 android:textSize="50px" />
         </LinearLayout>
 
@@ -165,6 +166,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Fragment"
+            android:textAllCaps="false"
+            android:textSize="50px" />
+ <Button
+            android:id="@+id/btn_actionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ActionBarView"
+            android:textAllCaps="false"
+            android:textSize="50px" />
+
+        <Button
+            android:id="@+id/btn_switchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SwitchButton"
+            android:textAllCaps="false"
+            android:textSize="50px" />
+   <Button
+            android:id="@+id/btn_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Spinner"
             android:textAllCaps="false"
             android:textSize="50px" />
 

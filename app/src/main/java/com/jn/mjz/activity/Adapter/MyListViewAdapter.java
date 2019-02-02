@@ -1,4 +1,4 @@
-package com.jn.mjz.activity;
+package com.jn.mjz.activity.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.jn.mjz.activity.R;
 
 public class MyListViewAdapter extends BaseAdapter {
     private Context mContext;
@@ -21,7 +21,7 @@ public class MyListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 15;
+        return 10;
     }
 
     @Override
@@ -35,32 +35,30 @@ public class MyListViewAdapter extends BaseAdapter {
     }
 
     static class ViewHolder {
-        public ImageView imageView;
-        public TextView tvTitle;
-        public TextView tvTime;
-        public TextView tvContent;
+        private ImageView mIv;
+        private TextView mTvTitle, mTvTime, mTvContent;
     }
 
-    //设置list的样式
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        ViewHolder viewHolder = null;
         if (convertView == null) {
+            viewHolder = new ViewHolder();
             convertView = mLayoutInflater.inflate(R.layout.layout_list_item, null);
-            holder = new ViewHolder();
-            holder.imageView = convertView.findViewById(R.id.iv);
-            holder.tvTitle = convertView.findViewById(R.id.tv_title);
-            holder.tvTime = convertView.findViewById(R.id.tv_time);
-            holder.tvContent = convertView.findViewById(R.id.tv_content);
-            convertView.setTag((holder));
+            viewHolder.mIv = convertView.findViewById(R.id.iv);
+            viewHolder.mTvTitle = convertView.findViewById(R.id.tv_title);
+            viewHolder.mTvTime = convertView.findViewById(R.id.tv_time);
+            viewHolder.mTvContent = convertView.findViewById(R.id.tv_content);
+            convertView.setTag(viewHolder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            viewHolder = (ViewHolder) convertView.getTag();
         }
-        //给控件赋值
-        holder.tvTitle.setText("这是标题");
-        holder.tvTime.setText("8102年");
-        holder.tvContent.setText("这是内容");
-        Glide.with(mContext).load("https://www.baidu.com/img/bd_logo1.png?where=super").into(holder.imageView);
+        //赋值
+        if (position % 2 == 0) {
+            viewHolder.mTvTitle.setText("偶数");
+        } else {
+            viewHolder.mTvTitle.setText("奇数");
+        }
         return convertView;
     }
 }

@@ -1,10 +1,12 @@
-package com.jn.mjz.activity;
+package com.jn.mjz.activity.Button;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.jn.mjz.activity.R;
 
 public class ButtonViewActivity extends AppCompatActivity {
 
